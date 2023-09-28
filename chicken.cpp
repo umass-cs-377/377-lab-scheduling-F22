@@ -4,14 +4,14 @@
 using namespace std;
 
 struct Chicken {
-	float age;
+	int age;
 	
-	Chicken(float _age){
+	Chicken(int _age){
 		age = _age;
 	}
 };
 
-struct SizeCheck{
+struct AgeCheck{
 	bool operator()(Chicken const& c1, Chicken const& c2){
 		return c1.age < c2.age;
 	}
@@ -33,7 +33,7 @@ int main() {
 	cout << "\n";
 	
 	//Uses the Chicken struct, a vector of type Chicken, and the SizeCheck operator to compare Chickens
-	priority_queue<Chicken, vector<Chicken>, SizeCheck> chickens; 
+	priority_queue<Chicken, vector<Chicken>, AgeCheck> chickens; 
 	chickens.push(Chicken(30));
 	chickens.push(Chicken(3));
 	chickens.push(Chicken(8));
