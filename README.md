@@ -57,14 +57,14 @@ chicken.cpp
 using namespace std;
 
 struct Chicken {
-	float age;
+	int age;
 	
-	Chicken(float _age){
+	Chicken(int _age){
 		age = _age;
 	}
 };
 
-struct SizeCheck{
+struct AgeCheck{
 	bool operator()(Chicken const& c1, Chicken const& c2){
 		return c1.age < c2.age;
 	}
@@ -86,7 +86,7 @@ int main() {
 	cout << "\n";
 	
 	//Uses the Chicken struct, a vector of type Chicken, and the SizeCheck operator to compare Chickens
-	priority_queue<Chicken, vector<Chicken>, SizeCheck> chickens; 
+	priority_queue<Chicken, vector<Chicken>, AgeCheck> chickens; 
 	chickens.push(Chicken(30));
 	chickens.push(Chicken(3));
 	chickens.push(Chicken(8));
@@ -102,9 +102,8 @@ int main() {
 
 	return 0;
 }
-
 ```
 
-The code above creates two priority queues, called numbers and chickens. Each sorts from high to low its metric – for numbers, the element itself, and for Chickens their size. As can be seen, it is significantly more difficult to sort a priority queue based on a struct than a primitive data type. There are also methods that can be done to create priority queues using classes – it is encouraged to look these up as they might be useful, but not required.
+The code above creates two priority queues, called numbers and chickens. Each sorts from high to low its metric – for numbers, the element itself, and for Chickens their age. As can be seen, it is significantly more difficult to sort a priority queue based on a struct than a primitive data type. There are also methods that can be done to create priority queues using classes – it is encouraged to look these up as they might be useful, but not required.
 
 Additionally, it is good to remember three major methods when working with priority queues: push, top, and pop. push allows you to add an element to the priority queue, top returns the element at the front of the queue, and pop removes the front element of the queue. You can also use the empty and size methods to return whether the queue is empty or its size, respectively.
